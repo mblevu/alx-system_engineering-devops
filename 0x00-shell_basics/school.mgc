@@ -1,2 +1,2 @@
-0 string SCHOOL School data
-!:mime School 
+#!/bin/bash
+echo "# Magic for School data files 0 string SCHOOL School data file" 

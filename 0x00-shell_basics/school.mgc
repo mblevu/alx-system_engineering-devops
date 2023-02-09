@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "# Magic for School data files 0 string SCHOOL School data file" 
+echo "# Magic for School data files 0 string SCHOOL School data file" > /tmp/magic

@@ -1,7 +1,7 @@
-Repository README
+**Repository README**
 This repository contains a collection of scripts for various purposes. The scripts are listed below with a brief description of what each one does.
 
-Scripts
+**Scripts**
 0
 This script creates an alias for rm *, making it easier to delete all files in a directory.
 
@@ -56,7 +56,7 @@ This script prints every other line from the input, starting with the first line
 17
 This script adds the values stored in the environment variables WATER and STIR, which are in bases "water" and "stir" respectively, and prints the result in base "bestchol".
 
-Conclusion
+**Conclusion**
 These scripts are designed to perform various functions, from basic system commands to more complex calculations and manipulations of data. Use them as needed, and feel free to modify them to suit your specific needs.
 
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # displays the contents of the current working directory
 
 for file in *

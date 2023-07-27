@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Display "Best School" 10 times but HI in 9th iteration
 count=0
 while [ $count -lt 10 ]

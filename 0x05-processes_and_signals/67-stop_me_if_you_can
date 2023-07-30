@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# handles sigterm for process 7
+pkill -f "7-highlander"
+if ps -C "7-highlander" >/dev/null; then
+    echo "Failed to stop 7-highlander process"
+else
+    echo "7-highlander process has been stopped"
+fi

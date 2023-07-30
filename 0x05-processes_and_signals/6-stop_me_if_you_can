@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Kill process 4 without kill
+pkill -f "4-to_infinity_and_beyond"
+if ps -C "4-to_infinity_and_beyond" >/dev/null; then
+    echo "Failed to stop 4-to_infinity_and_beyond process"
+else
+    echo "4-to_infinity_and_beyond process has been stopped"
+fi

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # displays the PID, along with the process name, of processes whose name contain the word bash
-script_pid=$$
 process_dirs=(/proc/[0-9]*)
 for dir in "${process_dirs[@]}"; do
     process_name=$(awk -F' ' '/Name/ {print $2}' "$dir/status")

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# configures an Ubuntu server
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run the script with root privileges."
+    exit 1
+fi
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "8.8.8.8 facebook.com" >> /etc/hosts
+echo "Configuration completed successfully."

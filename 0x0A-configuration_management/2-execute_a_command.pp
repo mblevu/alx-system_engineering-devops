@@ -1,9 +1,5 @@
-exec { 'killmenow_process':
-  command     => '/usr/bin/pkill killmenow',
-  refreshonly => true,
-}
-
-# Notify to run the exec resource immediately
-notify { 'killmenow_process':
-  require => Exec['killmenow_process'],
+# execute pkill commandto killmenow process
+exec { 'pkill':
+  command => 'pkill -9 -f killmenow',
+  path    => ['/usr/bin', '/usr/sbin', '/bin']
 }

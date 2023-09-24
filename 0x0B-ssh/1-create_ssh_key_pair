@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# define the key file name
+key_file="school"
+# number of bits in the created key (4096)
+key_bits=4096
+# passphrase for protecting the key
+passphrase="betty"
+# create an rsa key pair with the specified key file bits and passphrase
+ssh-keygen -t rsa -b "$key_bits" -f "$key_file" -N "$passphrase"
+# output a message to indicate that the key pair has been created
+echo "RSA key pair with $key_bits bits and has been created and protected by passphrase '$passphrase'."

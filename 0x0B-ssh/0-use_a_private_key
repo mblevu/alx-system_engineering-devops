@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# set the private key file path
+private_key="~/.ssh/school"
+
+# connect to the server using ssh with private key and user
+ssh -i "$private_key" ubuntu@"54.146.65.163"

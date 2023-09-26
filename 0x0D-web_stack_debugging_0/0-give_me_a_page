@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# start apache spas to return page conatining hello holberton
+service apache2 start

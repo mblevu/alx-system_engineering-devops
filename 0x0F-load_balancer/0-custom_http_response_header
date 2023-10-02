@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # duplicate web-01 to web-02
 #
- 
+
 # colors
 blue='\e[1;34m'
 brown='\e[0;33m'
@@ -14,7 +14,7 @@ echo -e "{blue}Updating and doing some minor checks...${reset}\n"
 function install() {
     command -v "$1" &> /dev/null
 
-    #shellcheck disablee=sc2181
+    #shellcheck disable=SC2181
     if [ $? -ne 0 ]; then
         echo -e " Installing: ${brown}$1${reset}\n"
         sudo apt-get update -y -qq && \
@@ -77,7 +77,7 @@ server_config=\
         }
 }"
 
-# shellcheck disbale=sc2154
+# shellcheck disable=SC2154
 echo "$server_config" | sudo dd status=none of=/etc/nginx/sites=enabled/default
 
 if [ "$(pgrep -c nginx)" -le 0 ]; then

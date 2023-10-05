@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # modify default nginx server block configuration
-sudo apt-get update -y
-sudo apt-get install nginx -y
-sudo sed -i 's/listen 80 default_server:/listen 80;/g' /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo service nginx restart

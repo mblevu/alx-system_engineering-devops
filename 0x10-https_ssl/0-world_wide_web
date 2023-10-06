@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Bash function to display information about a subdomain
 subdomains=( "www" "lb-01" "web-01" "web-02" )
 domain="$1"

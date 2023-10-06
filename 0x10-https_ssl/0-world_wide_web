@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+# displays information about subdomains
+get_subdomain_info() {
+    subdomain="$1"
+    domain="$2"
+    dns_info=$(dig "$subdomain,$domain" +short)
+
+    if [ -n "$dns_info" ]; then
+        echo "The subdomain $subdomain is a $(dig "$subdomain.$domain" +short | awk 'NR==1 {print $2}') record and points to $dns_info"
+    else
+        echo "The subdomain $subdomain does not have a valid A record."
+    fi
+}
+if [ $# -eq 2 ]; then
+    get_subdomain_info "$2" "$1"
+else
+    get_subdomain_info "www" "$1"
+    get_subdomain_info "lb-01" "$1"
+    get_subdomain_info "web-01" "$1"
+    get_subdomain_info "web-02" "$1"
+fi

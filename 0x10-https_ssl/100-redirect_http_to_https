@@ -1,0 +1,23 @@
+global
+    log /dev/log    local0
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+	timeout connect  10s
+	timeout client  30s
+	timeout server  30s
+
+frontend mblevu-tech-frontend
+	bind *:80
+	bind *:443 ssl crt /etc/haproxy/certs/mblevu.tech.pem
+	http-request redirect scheme https code 301 unless { ssl_fc }
+	http-request set-header X-Forwarded-Proto https
+	default_backend mblevu-tech-backend
+
+backend mblevu-tech-backend
+	balance roundrobin
+	server 223286-web-01 54.146.65.163:80 check
+	server 223286-web-02 3.85.177.42:80 check

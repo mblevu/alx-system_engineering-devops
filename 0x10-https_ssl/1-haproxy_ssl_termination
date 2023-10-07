@@ -1,6 +1,11 @@
 global
-    log /dev/log    local0
+    log /dev/log    local1 notice
+    chroot /var/lib/haproxy
     stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
 
 defaults
     log     global
@@ -13,9 +18,8 @@ defaults
 frontend mblevu-tech-frontend
     bind *:80
     bind *:443 ssl crt /etc/letsencrypt/www.mblevu.tech.pem
-	http-request redirect scheme https unless { ssl_fc }
-	http-request set-header X-Forwarded-Proto https
-	default_backend mblevu-tech-backend
+    redirect scheme https code 301 if !{ ssl_fc }
+    default_backend http_back
 
 backend mblevu-tech-backend
     server 223286-web-01 54.146.65.163:80 check

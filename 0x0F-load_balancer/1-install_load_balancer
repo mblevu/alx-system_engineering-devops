@@ -40,6 +40,8 @@ backend mblevu-tech-backend
     balance roundrobin
     server 223286-web-01 54.237.78.187:80 check
     server 223286-web-02 18.215.160.38:80 check
+    server web-01 54.237.78.187:80 check
+    server web-02 18.215.160.38:80 check
 "
 
 # shellcheck disable=SC2154

@@ -32,14 +32,14 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend web-frontend
-    bind *:80
-    bind *:443 ssl crt /etc/haproxy/certs/www.mblevu.tech.pem
-    redirect scheme https code 301 if !{ ssl_fc }
-    mode http
-    default_backend web-backend
 
-backend web-backend
-   balance roundrobin
-   server 223286-web-01 54.237.78.187:80 check
-   server 223286-web-02 18.215.160.38:80 check
+frontend http_front
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs/www.mblevu.tech.pem
+        redirect scheme https code 301 if !{ ssl_fc }
+        default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server 223286-web-01 54.237.78.187:80 check
+    server 223286-web-02 54.234.4.8:80 check

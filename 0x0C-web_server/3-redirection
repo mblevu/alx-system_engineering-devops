@@ -7,7 +7,7 @@ sudo touch /var/www/html/index.html
 sudo chmod go+w /var/www/html/index.html
 
 echo "server {
-    liste 80;
+    listen 80;
     listen [::]:80 default_server;
     root /var/www/html;
     index index.html;

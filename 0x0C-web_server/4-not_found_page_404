@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Configures new ubuntu machine by installing with 404
-sudo apt updte
+sudo apt update
 sudo apt install -y nginx
 
 sudo echo "Hello World" > /var/www/html/index.html

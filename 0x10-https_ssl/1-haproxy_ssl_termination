@@ -41,5 +41,5 @@ frontend web-frontend
 
 backend web-backend
    balance roundrobin
-   server 307554-web-01 3.85.1.116:80 check
-   server 307554-web-02 204.236.240.100:80 check
+   server 223286-web-01 54.237.78.187:80 check
+   server 223286-web-02 18.215.160.38:80 check

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Configures new ubuntu machine by installing with 404
-sudo apt update
+sudo apt updte
 sudo apt install -y nginx
+
 sudo echo "Hello World" > /var/www/html/index.html
 sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
 printf %s "server {
@@ -9,6 +10,10 @@ printf %s "server {
     listen [::]:80 default_server;
     root /var/www/html;
     index index.html;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
 
     error_page 404 /404.html;
     location /404.html {

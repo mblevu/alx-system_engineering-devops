@@ -13,7 +13,7 @@ sed -i 's/listen 80;/listen *:8080;/' /etc/nginx/sites-available/default
 service nginx start
 
 # Check if Nginx is running as the nginx user
-if [[ "$(ps -ef | grep 'nginx: master' | grep -c 'nginx')" -eq 1 ]]; then
+if [[ "$(pgrep -ef | grep 'nginx: master' | grep -c 'nginx')" -eq 1 ]]; then
     echo "Nginx is now running as the nginx user."
 else
     echo "Failed to configure Nginx to run as the nginx user."

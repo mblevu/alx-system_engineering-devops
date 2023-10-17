@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+#runs whoami to passed argument
+if [ $# -eq 1 ]; then
+    username="$1"
+
+    result=$(sudo -u "$username" whoami 2>&1)
+
+    if [ $? -eq 0 ]; then
+        echo "$result"
+    else
+        echo "User $username doesnt exist"
+    fi
+else
+    echo "Please provide exactly one username as argument"
+fi

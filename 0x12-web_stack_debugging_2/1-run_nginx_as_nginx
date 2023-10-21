@@ -1,7 +1,20 @@
 #!/bin/bash
 #configurs nginx to run as nginx not root user
-sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
-sudo sed -i 's/user root;/user nginx;/g' /etc/nginx/nginx.conf
+# Step 1: Modify the nginx.conf file
+# Make a backup of the original nginx.conf
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+# Change the user in nginx.conf to "nginx"
+sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
 
-sudo service nginx restart
+# Step 2: Modify the default server block (sites-available/default)
+# Change the port from 80 to 8080
+sed -i 's/listen 80;/listen 8080;/' /etc/nginx/sites-available/default
+
+# Step 3: Test Nginx configuration and restart the service
+nginx -t # Test the configuration
+if [ $? -eq 0 ]; then
+    service nginx restart
+else
+    echo "Nginx configuration test failed. Please check your configuration."
+fi

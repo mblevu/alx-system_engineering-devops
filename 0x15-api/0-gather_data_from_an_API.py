@@ -25,8 +25,9 @@ def fetch_to_do_list(employee_id):
         num_done_tasks = len(completed_tasks)
         total_num_tasks = len(todo_data)
 
-        print(f'Employee {employee_name} is done with tasks (
-                {num_done_tasks}/{total_num_tasks}):')
+        print(
+            'Employee {} is done with tasks({}/{}):'
+                .format(employee_name, num_done_tasks, total_num_tasks))
 
         for task in completed_tasks:
             print('\t {}'.format(task.get('title')))

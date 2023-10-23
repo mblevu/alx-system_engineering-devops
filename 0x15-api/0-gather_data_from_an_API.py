@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This script fetches and displays information about an employee's TODO list progress
+This script fetches and displays information about
+an employee's TODO list progress
 from a REST API.
 """
 import requests
@@ -24,7 +25,9 @@ def fetch_to_do_list(employee_id):
         num_done_tasks = len(completed_tasks)
         total_num_tasks = len(todo_data)
 
-        print('Employee {} is done with tasks({}/{}):'.format(employee_name, num_done_tasks, total_num_tasks))
+        print('Employee {} is done with tasks({}/{}):'.format(employee_name,
+                                                              num_done_tasks,
+                                                              total_num_tasks))
 
         for task in completed_tasks:
             print('\t {}'.format(task.get('title')))

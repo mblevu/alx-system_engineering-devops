@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This script fetches information about all employees' TODO list progress from a REST API
+This script fetches information about all employees' TODO list
+progress from a REST API
 and exports it to a JSON file.
 """
 import json

@@ -10,21 +10,17 @@ import sys
 
 def fetch_to_do_list(employee_id):
     """
-    Fetches and displays a to-do list for a given employee.
+    Fetches a to-do list for a given employee from a REST API.
 
     Args:
-        employee_id (int): The ID of the employee for whom the to-do list is to be fetched.
+        employee_id (int): The ID of the employee for whom the
+        to-do list is to be fetched.
 
     Returns:
         None
 
-    Raises:
-        requests.exceptions.RequestException: If there is an error in sending the HTTP requests.
-
-    Example:
-        fetch_to_do_list(1)
-
-    This code will fetch the to-do list for the employee with ID 1 and display the completed tasks along with the employee's name and the total number of tasks.
+    Prints out the employee's name, the number of completed tasks,
+    and the titles of the completed tasks.
     """
 
     base_url = 'https://jsonplaceholder.typicode.com/'

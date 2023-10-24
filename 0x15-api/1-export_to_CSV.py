@@ -10,50 +10,49 @@ import sys
 
 
 def fetch_and_export_to_csv(employee_id):
-    """Fetches employee TODO list progress
-    from a REST API and exports the data in CSV format.
     """
+    Fetches a to-do list for a given employee from a REST API
+    and exports the data in CSV format.
+
+    Args:
+        employee_id (int): The ID of the employee for whom the
+        to-do list is to be fetched.
+
+    Returns:
+        None
+
+    Exports the employee's name, the number of completed tasks,
+    and the titles of the completed tasks to a CSV file named
+    <employee_id>.csv.
+    """
+
     base_url = 'https://jsonplaceholder.typicode.com/'
     user_url = base_url + 'users/{}'.format(employee_id)
-    todos_url = base_url + 'todos?userId={}'.format(employee_id)
+    todo_url = base_url + 'todos?userId={}'.format(employee_id)
 
     user_response = requests.get(user_url)
-    todos_response = requests.get(todos_url)
+    todo_response = requests.get(todo_url)
     user_data = user_response.json()
-    todos_data = todos_response.json()
+    todo_data = todo_response.json()
 
-    employee_id = user_data.get('id')
+    completed_tasks = [todo for todo in todo_data if todo.get('completed')]
+
     employee_name = user_data.get('name')
+    num_done_tasks = len(completed_tasks)
+    total_num_tasks = len(todo_data)
 
-    csv_file_name = '{}.csv'.format(employee_id)
+    with open('{}.csv'.format(employee_id), 'w') as csv_file:
+        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
 
-    completed_tasks = [
-        {
-            "USER_ID": employee_id,
-            "USERNAME": employee_name,
-            "TASK_COMPLETED_STATUS": todo.get('completed'),
-            "TASK_TITLE": todo.get('title')
-        }
-        for todo in todos_data
-    ]
-
-    with open(csv_file_name, mode='w') as csv_file:
-        fieldnames = [
-            "USER_ID",
-            "USERNAME",
-            "TASK_COMPLETED_STATUS",
-            "TASK_TITLE"
-        ]
-        writer = csv.DictWriter(
-            csv_file,
-            fieldnames=fieldnames,
-            quoting=csv.QUOTE_ALL)
-        for task in completed_tasks:
-            writer.writerow(task)
-        print("Data exported to {}".format(csv_file_name))
+        for task in todo_data:
+            csv_writer.writerow(
+                [employee_id,
+                 employee_name,
+                 task.get('completed'),
+                 task.get('title')])
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) == 2:
         employee_id = sys.argv[1]
         fetch_and_export_to_csv(employee_id)

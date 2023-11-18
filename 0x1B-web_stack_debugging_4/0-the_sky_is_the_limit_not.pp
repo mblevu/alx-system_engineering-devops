@@ -7,11 +7,11 @@ package { 'apache2':
 # Configure Apache
 file { '/etc/apache2/mods-available/mpm_prefork.conf':
     ensure  => 'file',
-    content => "StartServers             5\n" +
-                          "MinSpareServers          5\n" +
-                          "MaxSpareServers          10\n" +
-                          "MaxRequestWorkers        100\n" +
-                          "MaxConnectionsPerChild   0\n",
+    content => "StartServers             5
+                MinSpareServers          5
+                MaxSpareServers          10
+                MaxRequestWorkers        100
+                MaxConnectionsPerChild   0",
     notify  => Service['apache2'],
 }
 

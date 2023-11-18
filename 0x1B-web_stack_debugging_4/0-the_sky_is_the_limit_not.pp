@@ -11,7 +11,7 @@ file { '/etc/apache2/mods-available/mpm_prefork.conf':
                           "MinSpareServers          5\n" +
                           "MaxSpareServers          10\n" +
                           "MaxRequestWorkers        100\n" +
-                         "MaxConnectionsPerChild   0\n",
+                          "MaxConnectionsPerChild   0\n",
     notify  => Service['apache2'],
 }
 

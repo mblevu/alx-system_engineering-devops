@@ -1,3 +1,4 @@
+# fixing request issue on server
 # Install Apache
 package { 'apache2':
     ensure => 'installed',
@@ -7,9 +8,9 @@ package { 'apache2':
 file { '/etc/apache2/mods-available/mpm_prefork.conf':
     ensure  => 'file',
     content => "StartServers             5\n" +
-                         "MinSpareServers          5\n" +
-                         "MaxSpareServers          10\n" +
-                         "MaxRequestWorkers        100\n" +
+                          "MinSpareServers          5\n" +
+                          "MaxSpareServers          10\n" +
+                          "MaxRequestWorkers        100\n" +
                          "MaxConnectionsPerChild   0\n",
     notify  => Service['apache2'],
 }

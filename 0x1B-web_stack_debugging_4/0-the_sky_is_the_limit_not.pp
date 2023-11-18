@@ -4,6 +4,11 @@ package { 'apache2':
     ensure => 'installed',
 }
 
+# Ensure the directory exists
+file { '/etc/apache2/mods-available':
+    ensure => 'directory',
+}
+
 # Configure Apache
 file { '/etc/apache2/mods-available/mpm_prefork.conf':
     ensure  => 'file',
@@ -12,12 +17,12 @@ file { '/etc/apache2/mods-available/mpm_prefork.conf':
                 MaxSpareServers          10
                 MaxRequestWorkers        100
                 MaxConnectionsPerChild   0",
+    require => File['/etc/apache2/mods-available'],
     notify  => Service['apache2'],
 }
 
 # Enable and start Apache service
 service { 'apache2':
     ensure    => 'running',
-    enable    => true,
-    subscribe => File['/etc/apache2/mods-available/mpm_prefork.conf'],
+    require   => File['/etc/apache2/mods-available/mpm_prefork.conf'],
 }

@@ -23,6 +23,6 @@ file { '/etc/apache2/mods-available/mpm_prefork.conf':
 
 # Enable and start Apache service
 service { 'apache2':
-    ensure    => 'running',
-    require   => File['/etc/apache2/mods-available/mpm_prefork.conf'],
+    ensure  => 'running',
+    require => File['/etc/apache2/mods-available/mpm_prefork.conf'],
 }
